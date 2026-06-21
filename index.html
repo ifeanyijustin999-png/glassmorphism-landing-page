@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+
+        *{
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             background-image: url(images/peter-thomas-lj4IsLzCei0-unsplash.jpg);
@@ -14,18 +18,21 @@
             background-repeat: no-repeat;
             min-height: 100vh;
             color: white;
+            overflow-x: hidden;
         }
 
         nav {
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0.95);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
             position: sticky;
-            top: 0px;
-            z-index: 1000;
+            top: 0;
+            z-index: 9999;
+
+            width: 100%;
         }
 
         .logo {
@@ -36,6 +43,8 @@
 
         .links {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;;
             gap: 15px;
         }
 
@@ -95,11 +104,54 @@
             padding: 80px 60px;
         }
 
+
+
         @media (max-width: 768px) {
+
+            /* Changes layout to wrap smoothly */
+            nav {
+                flex-wrap: wrap;
+                padding: 15px 25px;
+            }
+
+            /* Keeps logo on the left */
+            .logo {
+                flex: 1;
+            }
+
+            /* Keeps CTA button on the right */
+            .cta {
+                order: 2;
+            }
+
+            /* Forces the link bar to move to its own row below */
+            .links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+                gap: 10px;
+            }
+
+            nav a {
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+
+            /* Dropdown alignment on mobile */
+            .content {
+                min-width: 120px;
+            }
+
+            /* --- Your Existing Hero/Feature Media Query Rules --- */
             .hero {
                 flex-direction: column;
                 text-align: center;
                 padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
             }
 
             .hero-image img {
@@ -115,9 +167,8 @@
             .feature {
                 flex-direction: column;
                 align-items: center;
-                gap: 50px
+                gap: 50px;
             }
-
         }
 
         .hero-text {
